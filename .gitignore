@@ -1,0 +1,22 @@
+.settings
+.project
+.classpath
+/build/bin
+/build/tempsrc
+/build/build.properties
+/build/build_old.xml
+/jar/
+/tempsrc/
+.svn
+JSynV142.dll
+/externals/build_old
+/externals/old
+
+# Third-party binaries — NOT redistributed (see LICENSING.md).
+# Users must obtain these and place them in externals/ to build locally.
+/externals/jmsl.jar
+/externals/jscore.jar
+/externals/jsyn-20171016.jar
+/externals/jsyn-old-api-20161206.jar
+/externals/sqlite-jdbc-3.53.1.0.jar
+/externals/soundbank-deluxe.gm

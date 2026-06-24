@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<project name="dataSonification" default="jar" basedir=".">
+<!-- where the project source code is found -->
+	<property name="bin" location="bin" />
+	<property name="src" location="../src" />
+        <property name="tst" location="../tests" />
+        <property name="extdir" location="../externals" />
+	<property name="jardir" location="../jar" />
+	<property name="jarfile" location="${jardir}/${ant.project.name}.jar" />
+	<property name="tempsrcdir" location="tempsrc"/>
+	<property name="myname" value="${user.name}" />
+    <!-- JVM used by `ant run`. Default is whatever `java` resolves to on PATH. Override on the command line to run the daemon under a different JRE:
+           ant run -Drun.jvm="C:\Program Files\Java\jre1.8.0_301\bin\java.exe"
+    -->
+    <property name="run.jvm" value="java"/>
+	<property file="build.properties" />
+
+
+	<target name="init">
+		<tstamp>
+		      <format property="compiletime" pattern="MM/dd/yyyy hh:mm aa"/>
+		</tstamp>
+		<echo message="creating build.properties"/>
+		<delete dir="${bin}" />
+		<delete dir="${jardir}" />
+		<delete dir="${tempsrcdir}" />
+		<mkdir dir="${bin}" />
+		<mkdir dir="${jardir}" />
+		<mkdir dir="${tempsrcdir}" />
+	</target>
+
+  <target name="copyfiles" depends="init">
+    <mkdir dir="${tempsrcdir}"/>
+    <copy todir="${tempsrcdir}" filtering="true">
+      <fileset dir="${src}">
+        <include name="**/*.java"/>
+      </fileset>
+      <filterset>
+      	<filter token="REVISION" value="${revision}"/>
+        <filter token="COMPILE_TIME" value="${compiletime}"/>
+      	<filter token="COMPILE_USER" value="${user.name}" />
+      </filterset>
+   </copy>
+  	<echo message="added version information to source files"/>
+ </target>
+
+	<target name="compile" depends="init,copyfiles" description="compile classes">
+		<mkdir dir="${bin}"/>
+		<javac destdir="${bin}" srcdir="${tempsrcdir}"
+            source="17" target="17" encoding="UTF-8" includeantruntime="false">
+			<classpath>
+				<pathelement location="${extdir}/jmsl.jar"/>
+				<pathelement location="${extdir}/jscore.jar"/>
+				<pathelement location="${extdir}/sqlite-jdbc-3.53.1.0.jar"/>
+				<pathelement location="${extdir}/jsyn-old-api-20161206.jar"/>
+        <pathelement location="${extdir}/jsyn-20171016.jar"/>
+			</classpath>
+
+		</javac>
+	</target>
+
+	<target name="jar" depends="init,copyfiles,compile" description="build jar">
+   		<jar destfile="${jarfile}">
+  			<fileset dir="${bin}">
+				<include name="**/*.class"/>
+  			</fileset>
+  			<fileset dir="${src}">
+  				<include name="**/*.txt"/>
+  			</fileset>
+   		 	<zipgroupfileset dir="${extdir}" includes="*.jar"/>
+   			<manifest>
+				<attribute name="Main-Class" value="com.dataSonification.v2.Main"/>
+   			</manifest>
+		</jar>
+                <copy todir="${jardir}" >
+                  <fileset dir="${extdir}">
+                    <include name="soundbank-deluxe.gm" />
+                  </fileset>
+               </copy>
+ 	</target>
+
+	<target name="clean" depends="tidy" description="delete all generated files">
+    		<delete dir="${jardir}" quiet="true"/>
+	</target>
+
+
+	<target name="tidy" description="delete all intermediary files">
+    		<delete dir="${tempsrcdir}" quiet="true"/>
+    		<delete dir="${bin}" quiet="true"/>
+	</target>
+
+        <target name="run">
+            <java classname="com.dataSonification.v2.MainDaemon" fork="true" jvm="${run.jvm}">
+                 <classpath>
+                   <pathelement path="${jardir}/dataSonification.jar"/>
+                 </classpath>
+                 <arg value="-PORT"/>
+                 <arg value="2011"/>
+            </java>
+        </target>
+
+</project>

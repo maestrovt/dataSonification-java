@@ -1,0 +1,58 @@
+##############################################################
+# Settings for User Interface
+#
+# Valid settings are:
+#   com.dataSonification.v2.ui.ControlUI - for Java Application
+#   com.dataSonification.v2.ui.AppletUI - for Java Applet
+#   com.dataSonification.v2.ui.FacelessUI - For Excel Addin
+##############################################################
+UI|java.lang.String|com.dataSonification.v2.ui.FacelessUI
+UI_HELPER|java.lang.String|DefaultUIHelper
+#
+#
+DATA_SOURCES|java.lang.String|excel
+DATA_ENTITIES|java.lang.String|Bassoon,FrenchHorn,LowPiano,Harpsichord,Clarinet,Vibraphone,MusicBox,Flute,HighPiano,Glockenspiel
+SAMPLE_DIR|java.lang.String|C:\Program Files\dataSonification\Excel\Samples\
+
+USE_MIDI|java.lang.Boolean|true
+USE_JSYN|java.lang.Boolean|true
+#
+##############################################################
+# Settings for Configuration Storage and Retrieval
+#
+# If CORE_ID (below) is 0, use settings files, <0 use JDBC
+# JDBC configuration has been tested with HSQLDB and MySQL
+# JDBC-ODBC bridge has been tested with MS Access and MS Excel
+##############################################################
+# Do not use: CORE_ID|java.lang.Integer|1
+#
+# JDBC-ODBC Bridge (for use with Excel and other ODBC databases)
+#
+# DB_NAME|java.lang.String|jdbc:odbc:v2Conf-excel#System DSN for Excel file
+DB_NAME|java.lang.String|C:\Documents and Settings\Owner\My Documents\Development\addin\instruments.xls
+DB_DRIVER|java.lang.String|org.sqlite.JDBC
+DB_USER|java.lang.String|
+DB_PASSWORD|java.lang.String|
+
+#
+# Instrument DB settings
+#
+INST_DB_NAME|java.lang.String|C:\Program Files\dataSonification\InstDB.xls
+INST_DB_DRIVER|java.lang.String|org.sqlite.JDBC
+INST_DB_USER|java.lang.String|
+INST_DB_PASSWORD|java.lang.String|
+#
+# MySQL DB config
+#
+# DB_NAME|java.lang.String|jdbc:mysql://localhost/config
+# DB_DRIVER|java.lang.String|com.mysql.jdbc.Driver
+# DB_USER|java.lang.String|root
+# DB_PASSWORD|java.lang.String|mysql123password
+#
+# HSQLDB
+#
+# DB_NAME|java.lang.String|jdbc:hsqldb:config
+# DB_DRIVER|java.lang.String|org.hsqldb.jdbcDriver
+# DB_USER|java.lang.String|sa
+# DB_PASSWORD|java.lang.String|
+#
