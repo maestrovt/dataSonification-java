@@ -20,3 +20,7 @@ JSynV142.dll
 /externals/jsyn-old-api-20161206.jar
 /externals/sqlite-jdbc-3.53.1.0.jar
 /externals/soundbank-deluxe.gm
+
+# Claude Code — local dev notes, never published
+CLAUDE.md
+.claude/
