@@ -12,7 +12,18 @@ UI_HELPER|java.lang.String|DefaultUIHelper
 #
 DATA_SOURCES|java.lang.String|excel
 DATA_ENTITIES|java.lang.String|Bassoon,FrenchHorn,LowPiano,Harpsichord,Clarinet,Vibraphone,MusicBox,Flute,HighPiano,Glockenspiel
-SAMPLE_DIR|java.lang.String|C:\Program Files\dataSonification\Excel\Samples\
+#
+# SAMPLE_DIR, DB_NAME and INST_DB_NAME below are the standalone/desktop-mode
+# defaults only. In the Excel workflow the add-in sends these values over the
+# socket at connect time and they OVERRIDE whatever is set here (the add-in
+# derives them from the folder the XLL is deployed in). For standalone use,
+# extract the runtime samples release next to the engine and edit the paths
+# below to match.
+#
+# Directory containing the instrument sample folders (the "Samples" folder
+# from the dataSonification-runtime-samples release). Relative to the JVM
+# working directory unless an absolute path is given.
+SAMPLE_DIR|java.lang.String|Samples
 
 USE_MIDI|java.lang.Boolean|true
 USE_JSYN|java.lang.Boolean|true
@@ -20,39 +31,24 @@ USE_JSYN|java.lang.Boolean|true
 ##############################################################
 # Settings for Configuration Storage and Retrieval
 #
-# If CORE_ID (below) is 0, use settings files, <0 use JDBC
-# JDBC configuration has been tested with HSQLDB and MySQL
-# JDBC-ODBC bridge has been tested with MS Access and MS Excel
+# If CORE_ID (below) is 0, use settings files, <0 use JDBC.
+# The supported driver is SQLite (org.sqlite.JDBC); the config database is the
+# dataSonification.db shipped with the runtime samples release.
 ##############################################################
 # Do not use: CORE_ID|java.lang.Integer|1
 #
-# JDBC-ODBC Bridge (for use with Excel and other ODBC databases)
-#
-# DB_NAME|java.lang.String|jdbc:odbc:v2Conf-excel#System DSN for Excel file
-DB_NAME|java.lang.String|C:\Documents and Settings\Owner\My Documents\Development\addin\instruments.xls
+# Path to the SQLite config database, as a jdbc:sqlite: URL. Relative to the
+# JVM working directory unless an absolute path is given.
+DB_NAME|java.lang.String|jdbc:sqlite:dataSonification.db
 DB_DRIVER|java.lang.String|org.sqlite.JDBC
 DB_USER|java.lang.String|
 DB_PASSWORD|java.lang.String|
 
 #
-# Instrument DB settings
+# Instrument DB settings (same SQLite database by default)
 #
-INST_DB_NAME|java.lang.String|C:\Program Files\dataSonification\InstDB.xls
+INST_DB_NAME|java.lang.String|jdbc:sqlite:dataSonification.db
 INST_DB_DRIVER|java.lang.String|org.sqlite.JDBC
 INST_DB_USER|java.lang.String|
 INST_DB_PASSWORD|java.lang.String|
-#
-# MySQL DB config
-#
-# DB_NAME|java.lang.String|jdbc:mysql://localhost/config
-# DB_DRIVER|java.lang.String|com.mysql.jdbc.Driver
-# DB_USER|java.lang.String|root
-# DB_PASSWORD|java.lang.String|mysql123password
-#
-# HSQLDB
-#
-# DB_NAME|java.lang.String|jdbc:hsqldb:config
-# DB_DRIVER|java.lang.String|org.hsqldb.jdbcDriver
-# DB_USER|java.lang.String|sa
-# DB_PASSWORD|java.lang.String|
 #

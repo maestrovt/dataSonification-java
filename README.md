@@ -14,9 +14,10 @@ field of data sonification.
 
 - **[dataSonification-excel-addin](https://github.com/maestrovt/dataSonification-excel-addin)**
   — the C# / ExcelDna add-in that feeds data to this engine and ships the
-  runtime configuration database. The **audio sample set** is distributed as a
-  GitHub Release asset on that repository
-  (`dataSonification-runtime-samples.zip`).
+  runtime configuration database.
+- The **audio sample set** that the engine plays is distributed as a GitHub
+  Release asset on **this** repository
+  (`dataSonification-runtime-samples.zip`, under *Releases*).
 
 ## Sonification schemes
 

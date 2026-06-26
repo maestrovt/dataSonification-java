@@ -34,14 +34,15 @@ ant clean && ant jar && ant run    # daemon on PORT 2011 for the Excel add-in
 ## Audio sample sets
 
 The sample-based instruments load audio from a separate sample directory, not
-from this repository. The cleaned sample set is distributed as a GitHub Release
-asset on the Excel add-in repository:
+from the tracked source. The cleaned sample set is distributed as a GitHub
+Release asset on this repository:
 
-- **dataSonification-excel-addin → Releases → `dataSonification-runtime-samples.zip`**
+- **Releases → `dataSonification-runtime-samples.zip`**
 
-Sample provenance and acknowledgments are documented in that release and in the
-Excel add-in repository README. In particular, the **ACB (Acoustic Branding)**
-sample set is redistributed with grateful acknowledgment to its creators.
+Sample provenance and acknowledgments are documented in that release (see the
+`READHERE.txt` inside the archive). In particular, the **ACB (Acoustic
+Branding)** sample set is redistributed with grateful acknowledgment to its
+creators.
 
 ## Removed components
 
