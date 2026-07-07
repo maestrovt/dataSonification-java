@@ -2,18 +2,17 @@
 
 ## Abstract
 
-This repository contains the Java audio engine for the dataSonification project. The companion Excel add-in lives in a separate repository.
+This repository contains the Java audio engine for the dataSonification project. The companion Excel add-in lives in the *[dataSonification-excel-addin respository](https://github.com/maestrovt/dataSonification-excel-addin)*.
 
-The Java code currently builds in Java 8. On this development machine, the JDK is located at `C:\Program Files (x86)\Java\jdk1.8.0_301` and the JRE at `C:\Program Files (x86)\Java\jre1.8.0_301`. The build system is Ant (`C:\tools\apache-ant-1.10.15`). To build and run, change to the `build` folder and use Ant targets — see `CLAUDE.md` for specifics.
+The code in this repository was originally built an deployed in 2002 as a pilot project to financial traders. The project failed as a commercial venture. In 2026, the codebase was update to build in Java 17.
 
-The C# Excel add-in is in a sibling repository and is built in Microsoft Visual Studio Community 2019 (or later). Running together, the two pieces communicate over a TCP socket on port 2011 using an XML-based wire protocol.
+It is hoped that releasing this code on an open source platform will be useful to the sonification research community.
 
-The overall goals of this update effort are:
+The platform as currently implemented is designed to sonify any kind of real time data that can be imported into an Excel spreadsheet.
 
-1. Modernize the Java engine to a current LTS release, subject to legacy `.jar` dependency constraints.
-2. Modernize the Excel add-in to run under 64-bit Microsoft 365 on Windows 11 and on Parallels Desktop on Apple Silicon Macs.
-3. Fix known bugs.
-4. Publish the buildable repositories on [GitHub](https://github.com/maestrovt) under the dataSonification name.
+The existing sonification strategies were designed with financial data in mind, no doubt they could be adapted to other uses.
+
+What follows is some background and explanation of the software.
 
 ## History
 

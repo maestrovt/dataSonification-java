@@ -7,7 +7,7 @@ daemon that streams sonifications in real time. It is most commonly driven by
 the companion Excel add-in, which sends spreadsheet data to the daemon over a
 local TCP connection.
 
-See <http://www.datasonification.com/> for background on the project and the
+See Overview.md in this repository for background on the project and the
 field of data sonification.
 
 ## Related repositories
