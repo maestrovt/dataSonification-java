@@ -4,7 +4,7 @@
 
 This repository contains the Java audio engine for the dataSonification project. The companion Excel add-in lives in the *[dataSonification-excel-addin respository](https://github.com/maestrovt/dataSonification-excel-addin)*.
 
-The code in this repository was originally built an deployed in 2002 as a pilot project to financial traders. The project failed as a commercial venture. In 2026, the codebase was update to build in Java 17.
+The code in this repository was originally built an deployed in 2002 as a pilot project for financial traders. The project failed as a commercial venture. In 2026, the codebase was update to build in Java 17.
 
 It is hoped that releasing this code on an open source platform will be useful to the sonification research community.
 
