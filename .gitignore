@@ -5,6 +5,7 @@
 /build/tempsrc
 /build/build.properties
 /build/build_old.xml
+/build/*.log
 /jar/
 /tempsrc/
 .svn
